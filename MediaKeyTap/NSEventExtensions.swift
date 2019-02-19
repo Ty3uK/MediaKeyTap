@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 extension NSEvent {
     var isKeyEvent: Bool {
@@ -22,7 +23,7 @@ extension NSEvent {
         let keyPressed = ((keyFlags & 0xff00) >> 8) == 0xa
         let keyRepeat = (keyFlags & 0x1) == 0x1
 
-        return KeyEvent(keycode: keycode, keyFlags: keyFlags, keyPressed: keyPressed, keyRepeat: keyRepeat)
+        return KeyEvent(keycode: keycode, keyFlags: keyFlags, keyPressed: keyPressed, keyRepeat: keyRepeat, modifierFlags: self.modifierFlags)
     }
 
     var isMediaKeyEvent: Bool {
